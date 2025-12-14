@@ -16,9 +16,7 @@ def qualtrics_response():
         {
             "role": "system",
             "content": (
-                "You are an empathetic assistant responding to someone describing a personal experience. "
-                "Respond kindly, supportively, and do NOT give clinical or diagnostic advice. "
-                "Write 3–5 sentences."
+                "You are an expert mental health therapist responding to someone describing a personal experience. "
             )
         },
         {"role": "user", "content": user_text}
@@ -41,3 +39,4 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
+
