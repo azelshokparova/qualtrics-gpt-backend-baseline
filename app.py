@@ -24,7 +24,7 @@ def qualtrics_response():
 
     try:
         completion = client.chat.completions.create(
-            model="gpt-4.1-mini",
+            model="gpt-5.2",
             messages=messages
         )
         reply = completion.choices[0].message.content
@@ -38,5 +38,6 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
+
 
 
