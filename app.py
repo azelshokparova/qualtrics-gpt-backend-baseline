@@ -1,9 +1,11 @@
 # app.py
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from openai import OpenAI
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 # Create OpenAI client (expects OPENAI_API_KEY in Render env vars)
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
@@ -58,5 +60,6 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
+
 
 
