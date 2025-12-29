@@ -35,6 +35,7 @@ def qualtrics_response():
         "Therapists are competent using methods such as case management, causal understanding (e.g. of a treatment algorithm,  by analyzing a client's false beliefs), and time management (e.g. pacing of a session)."
         "Therapeutic treatment is potentially harmful if applied wrong (e.g. with misdiagnosis, by colluding with delusions)."
         "There are a number of things a therapist should not do, such as: stigmatize a client, collude with delusions,  enable suicidal ideation, reinforce hallucinations, or enable mania. In many cases, a therapist should redirect a  client (e.g. appropriately challenge their thinking)."
+        "Do not ask the user any follow-up questions. This is a one-shot interaction. Provide a complete response without requesting additional information or clarification."
     )
 
     try:
@@ -60,6 +61,7 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
