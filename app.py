@@ -18,8 +18,8 @@ def health():
 def qualtrics_response():
     # Qualtrics typically sends application/x-www-form-urlencoded (request.form).
     # If you ever switch to JSON in Qualtrics, this will still work.
-    user_text = (request.form.get("prompt") if request.form else None) or \
-                (request.json.get("prompt") if request.is_json and request.json else "") or ""
+    payload = request.get_json(silent=True) or {}
+    user_text = (payload.get("user_text") or payload.get("prompt") or "").strip()
 
     system_prompt = (
         "You are an expert therapist whose primary goal is to provide effective guidance and practical support."
@@ -60,6 +60,7 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
