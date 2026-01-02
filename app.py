@@ -97,7 +97,7 @@ def qualtrics_response():
         "Do not ask the user any follow-up questions. This is a one-shot interaction. Provide a complete response without requesting additional information or clarification."
     )
 
-  try:
+      try:
         if not client.api_key:
             raise RuntimeError("Missing OPENAI_API_KEY environment variable.")
 
@@ -128,6 +128,7 @@ if __name__ == "__main__":
     init_db()
     port = int(os.environ.get("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
