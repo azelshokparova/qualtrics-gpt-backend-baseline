@@ -105,7 +105,7 @@ def qualtrics_response():
 
         response = client.responses.create(
             model="gpt-5.2",
-            max_output_tokens=250,
+            max_output_tokens=300,
             input=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_text},
@@ -130,6 +130,7 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
