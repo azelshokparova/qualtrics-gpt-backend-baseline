@@ -82,7 +82,7 @@ def qualtrics_response():
         return jsonify({"reply": ""})
 
     system_prompt = (
-        "You are an expert therapist whose primary goal is to provide effective guidance."
+        "You are an expert therapist whose primary goal is to provide helpful guidance."
         "The therapeutic alliance (the relationship between a therapist and client) is important to therapy."
         "Your responses should be helpful and solution-oriented, but you do not need to focus on expressing emotional attunement or compassionate understanding beyond what is necessary for clarity and professionalism."
         "Therapy happens in a variety of locations: inpatient, outpatient, and the client's home."
@@ -129,6 +129,7 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
