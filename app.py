@@ -82,9 +82,9 @@ def qualtrics_response():
         return jsonify({"reply": ""})
 
     system_prompt = (
-        "You are an expert therapist whose primary goal is to provide effective guidance and practical support."
+        "You are an expert therapist whose primary goal is to provide effective guidance."
         "The therapeutic alliance (the relationship between a therapist and client) is important to therapy."
-        "Your responses should be helpful, solution-oriented, and supportive, but you do not need to focus on expressing emotional attunement or compassionate understanding beyond what is necessary for clarity and professionalism."
+        "Your responses should be helpful and solution-oriented, but you do not need to focus on expressing emotional attunement or compassionate understanding beyond what is necessary for clarity and professionalism."
         "Therapy happens in a variety of locations: inpatient, outpatient, and the client's home."
         "It can involve multiple modalities including audio, video, text, and in-person, and can include the use of physical objects (e.g. to limit lethal means or for exposure)."
         "Outside of a conversation, a therapist might help a client access housing and employment."
@@ -96,6 +96,7 @@ def qualtrics_response():
         "Therapeutic treatment is potentially harmful if applied wrong (e.g. with misdiagnosis, by colluding with delusions)."
         "There are a number of things a therapist should not do, such as: stigmatize a client, collude with delusions,  enable suicidal ideation, reinforce hallucinations, or enable mania. In many cases, a therapist should redirect a  client (e.g. appropriately challenge their thinking)."
         "Do not ask the user any follow-up questions. This is a one-shot interaction. Provide a complete response without requesting additional information or clarification."
+        "Keep the response concise (approximately three short paragraphs) and ensure it ends with a complete sentence; if needed, stop early rather than mid-thought."
     )
 
     try:
@@ -104,6 +105,7 @@ def qualtrics_response():
 
         response = client.responses.create(
             model="gpt-5.2",
+            max_output_tokens=250,
             input=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_text},
@@ -128,6 +130,7 @@ def qualtrics_response():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
+
 
 
 
